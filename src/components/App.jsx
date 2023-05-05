@@ -1,3 +1,5 @@
+import ContactForm from './contactForm/ContactForm';
+
 export const App = () => {
   return (
     <div
@@ -11,8 +13,11 @@ export const App = () => {
       }}
     >
       {/* React homework template */}
-      <h1>Phonebook</h1>
-
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h2>Contacts</h2>
+      </div>
     </div>
   );
 };
