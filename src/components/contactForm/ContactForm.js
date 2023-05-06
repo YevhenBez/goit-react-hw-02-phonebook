@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './css/contactForm.module.css';
 
 class ContactForm extends React.Component { 
     state = {
@@ -12,6 +13,7 @@ class ContactForm extends React.Component {
                 <label>
                     Name
                     <input
+                        className={css.inputName}
                         type="text"
                         name="name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
