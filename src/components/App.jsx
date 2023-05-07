@@ -8,10 +8,11 @@ class App extends React.Component {
     contacts: [],
   }
   
-  addContact = ({ name }) => {
+  addContact = ({ name, number }) => {
         const contact = {
-            id: nanoid(),
-            name,
+          id: nanoid(),
+          name,
+          number
         };
 
         this.setState(({ contacts }) => ({

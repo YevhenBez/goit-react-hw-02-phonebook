@@ -2,10 +2,10 @@ function ContactList({ contacts }) {
     console.log({ contacts });
     return (
         <ul>
-            {contacts.map(({ id, name }) => (
+            {contacts.map(({ id, name, number }) => (
                 <li  key={id}>
                     <p>
-                        {name}
+                        {name}: {number}
                     </p>
                 </li>
             ))}
