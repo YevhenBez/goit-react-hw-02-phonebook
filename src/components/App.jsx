@@ -39,6 +39,12 @@ class App extends React.Component {
       }
   }
   
+  deleteContact = contactId => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
   };
@@ -72,7 +78,7 @@ class App extends React.Component {
           <ContactForm onSubmit={this.addContact}/>
           <h2>Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
-          <ContactList contacts={visibleContacts}/>
+          <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact}/>
         </div>
       </div>
     );
