@@ -11,6 +11,7 @@ function ContactList({ contacts, onDeleteContact }) {
                         {name}: {number}
                     </p>
                     <button
+                        className={css.btnDelete}
                         type="button"
                         onClick={() => onDeleteContact(id)}>Delete</button>
                 </li>
