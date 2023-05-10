@@ -1,5 +1,5 @@
 import React from 'react';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 import ContactForm from './contactForm/ContactForm';
 import ContactList from './contactList/ContactList';
 import ContactListElement from './contactListElement/ContactListElement';
@@ -8,38 +8,38 @@ import Filter from './Filter/Filter';
 class App extends React.Component {
   state = {
     contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ''
-  }
-  
+    filter: '',
+  };
+
   addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(),
       name,
-      number
+      number,
     };
-    
+
     const { contacts } = this.state;
 
     if (
       contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase(),
+        contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
       alert(`${name} is already in contacts.`);
     } else if (contacts.find(contact => contact.number === number)) {
       alert(`${number} is already in contacts.`);
     } else {
-        this.setState(({ contacts }) => ({
-          contacts: [contact, ...contacts],
-        }));
-      }
-  }
-  
+      this.setState(({ contacts }) => ({
+        contacts: [contact, ...contacts],
+      }));
+    }
+  };
+
   deleteContact = contactId => {
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(contact => contact.id !== contactId),
@@ -55,10 +55,10 @@ class App extends React.Component {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-  
+
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
@@ -70,20 +70,25 @@ class App extends React.Component {
           justifyContent: 'center',
           alignItems: 'center',
           fontSize: 40,
-          color: '#010101'
+          color: '#010101',
         }}
       >
         {/* React homework template */}
         <div>
           <h1>Phonebook</h1>
-          <ContactForm onSubmit={this.addContact}/>
+          <ContactForm onSubmit={this.addContact} />
           <h2>Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
-          <ContactList ><ContactListElement contacts={visibleContacts} onDeleteContact={this.deleteContact}/></ContactList>
+          <ContactList>
+            <ContactListElement
+              contacts={visibleContacts}
+              onDeleteContact={this.deleteContact}
+            />
+          </ContactList>
         </div>
       </div>
     );
   }
-};
+}
 
 export default App;
