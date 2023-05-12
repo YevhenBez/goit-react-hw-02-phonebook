@@ -1,20 +1,16 @@
 import PropTypes from 'prop-types';
 import ContactListElement from '../contactListElement/ContactListElement';
 
-const ContactList = ({ children }) => {
-  // console.log(children);
-  // console.log(children[1]);
-  // console.log(children[3]);
-
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
-      {children[1].map(contact => (
+      {contacts.map(contact => (
         <ContactListElement
           key={contact.id}
           id={contact.id}
           name={contact.name}
           number={contact.number}
-          onDeleteContact={children[3]}
+          onDeleteContact={onDeleteContact}
         />
       ))}
     </ul>
@@ -22,7 +18,8 @@ const ContactList = ({ children }) => {
 };
 
 ContactList.propTypes = {
-  children: PropTypes.array.isRequired,
+  contacts: PropTypes.array.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactList;
